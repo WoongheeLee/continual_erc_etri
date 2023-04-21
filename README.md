@@ -6,9 +6,13 @@
 ...
 
 ## 디렉토리 구조
+* KEMDy20은 v1.1
 ```
 ├── README.md
 ├── data
+│   ├── KEMDy19
+│   └── KEMDy20
+└── utils
 ├── models
 └── utils
 ```
