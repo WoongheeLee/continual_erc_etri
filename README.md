@@ -20,7 +20,10 @@
 ├── models
 └── utils
 ```
-
+* 데이터
+  * K. J. Noh and H. Jeong, “KEMDy19,” https://nanum.etri.re.kr/share/kjnoh/KEMDy19?lang=ko_KR 
+  * K. J. Noh and H. Jeong, “KEMDy20,” https://nanum.etri.re.kr/share/kjnoh/KEMDy20?lang=ko_KR 
+  
 ## 사용 설명서
 ### 실험 환경
 * 
