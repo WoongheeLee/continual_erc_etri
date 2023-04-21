@@ -17,4 +17,9 @@
 └── utils
 ```
 ## 사용 설명서
-...
+### 실험 환경
+### 실험 재현
+* without pretraining
+```
+bash run-adapter-wo-pretraining.sh
+```
