@@ -16,10 +16,16 @@
 ├── models
 └── utils
 ```
+
 ## 사용 설명서
 ### 실험 환경
-### 실험 재현
+* 
+
+### 모델 학습
 * without pretraining
 ```
 bash run-adapter-wo-pretraining.sh
 ```
+
+### 성능 비교
+* 
