@@ -3,14 +3,36 @@
 ## 팀명: 이모저모
 
 ## 연구 요약
-...
+* 대화 중 자동 감정 인식 기술은 의료계와 산업계의 다양한 분야에 적용되며 중요한 역할을 하고 있음
+* 고성능의 자동화 된 **멀티모달 데이터 기반 감정 인식 기술 구현**을 위해서는 **대규모의 학습 데이터가 필요** 함
+* 그러나 이러한 데이터는 **민감 정보가 담긴 경우가 많아 직접적인 공유 보다는 모델 파라미터만 공유하는 방식**이 널리 쓰임
+* 모델 파라미터만을 전달 받아 새로운 태스크 데이터로 미세조정 학습(fine-tuning)을 하는 경우 **과거 태스크 데이터에 대한 예측 성능이 떨어지는 파괴적 망각(catastrophic forgetting)이 발생**
+* 따라서 이 연구에서는 **태스크별 아답터를 사용하여 파괴적 망각을 방지할 수 있는 멀티모달 감정 인식 모델**을 구현하였음
 
 ## 디렉토리 구조
+* KEMDy20은 v1.1
 ```
 ├── README.md
 ├── data
+│   ├── KEMDy19
+│   └── KEMDy20
+└── experiments
 ├── models
 └── utils
 ```
+* 데이터
+  * K. J. Noh and H. Jeong, “KEMDy19,” https://nanum.etri.re.kr/share/kjnoh/KEMDy19?lang=ko_KR 
+  * K. J. Noh and H. Jeong, “KEMDy20,” https://nanum.etri.re.kr/share/kjnoh/KEMDy20?lang=ko_KR 
+  
 ## 사용 설명서
-...
+### 실험 환경
+* 
+
+### 모델 학습
+* without pretraining
+```
+bash run-adapter-wo-pretraining.sh
+```
+
+### 성능 비교
+* 
