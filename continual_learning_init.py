@@ -118,7 +118,7 @@ def main(args):
     np.random.seed(args.seed)
     device = 'cpu' if args.cpu else 'cuda'
 
-    train19_dl, valid19_dl, test19_dl = get_data_loader(data_root='../data/KEMDy19',
+    train19_dl, valid19_dl, test19_dl = get_data_loader(data_root='./data/KEMDy19',
                                                         max_text_len=args.max_text_len,
                                                         max_seq_len=args.max_seq_len,
                                                         k_fold=args.k_fold,
@@ -126,7 +126,7 @@ def main(args):
                                                         batch_size=args.batch_size,
                                                         seed=args.seed)
     
-    train20_dl, valid20_dl, test20_dl = get_data_loader(data_root='../data/KEMDy20',
+    train20_dl, valid20_dl, test20_dl = get_data_loader(data_root='./data/KEMDy20',
                                                         max_text_len=args.max_text_len,
                                                         max_seq_len=args.max_seq_len,
                                                         k_fold=args.k_fold,
@@ -138,7 +138,7 @@ def main(args):
     valid_dl = valid19_dl if args.task == 'KEMDy19' else valid20_dl
     test_dl = test19_dl if args.task == 'KEMDy19' else test20_dl
 
-    output_dir = Path(f'./outputs/task_a/fold_{args.num_fold}')
+    output_dir = Path(f'./outputs/task_a/fold_{args.num_fold}/{args.task}')
     output_dir.mkdir(parents=True, exist_ok=True)
 
     model = MultiModalClassifier().to(device)
