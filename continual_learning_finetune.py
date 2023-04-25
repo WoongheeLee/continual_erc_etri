@@ -138,7 +138,7 @@ def main(args):
     valid_dl = valid19_dl if args.task == 'KEMDy19' else valid20_dl
     test_dl = test19_dl if args.task == 'KEMDy19' else test20_dl
 
-    prev_valid_dl = train20_dl if args.task == 'KEMDy19' else train19_dl
+    prev_valid_dl = valid20_dl if args.task == 'KEMDy19' else valid19_dl
 
     output_dir = Path(f'./outputs/finetune/fold_{args.num_fold}/{args.task}')
     output_dir.mkdir(parents=True, exist_ok=True)
