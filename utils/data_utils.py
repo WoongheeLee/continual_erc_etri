@@ -6,6 +6,7 @@ import torch
 import torchaudio
 import numpy as np
 import pandas as pd
+from tqdm import tqdm
 
 from sklearn.model_selection import KFold
 from torch.nn.utils.rnn import pad_sequence
@@ -105,7 +106,7 @@ def build_fisher_matrix(dataset, model, optimizer, criterion, device):
 
     model.train()
 
-    for batch in old_task_loader:
+    for batch in tqdm(old_task_loader, ncols=80, desc='build_fisher_matrix()'):
         optimizer.zero_grad()
 
         speech_inputs, text_inputs, labels = batch
