@@ -95,6 +95,48 @@ def get_data_loader(data_root, max_text_len, max_seq_len, k_fold, fold, batch_si
 
     return train_dl, valid_dl, test_dl
 
+def get_data_loader_ewc(data_root, max_text_len, max_seq_len, k_fold, fold, batch_size, seed=12):
+    tokenizer = BertTokenizer.from_pretrained('klue/bert-base')
+    processor = Wav2Vec2Processor.from_pretrained('facebook/wav2vec2-base-960h')
+
+    dataset = Dataset(data_root=data_root, tokenizer=tokenizer, processor=processor,
+                      max_text_len=max_text_len, max_seq_len=max_seq_len)
+
+    train_ds = FoldDataset(dataset, k=k_fold, fold=fold, split='train', seed=seed)
+    
+    return train_ds
+
+def build_fisher_matrix(dataset, model, optimizer, criterion, device):
+    old_task_loader = DataLoader(dataset, batch_size=10, collate_fn=collate_fn, shuffle=True)
+
+    fisher = { name: param.data * 0. for name, param in model.named_parameters() }
+
+    model.train()
+
+    for batch in old_task_loader:
+        optimizer.zero_grad()
+
+        speech_inputs, text_inputs, labels = batch
+        speech_inputs = {k: v.to(device) for k, v in speech_inputs.items()}
+        text_inputs = {k: v.to(device) for k, v in text_inputs.items()}
+        labels = labels.to(device)
+
+        outputs = model(speech_inputs, text_inputs)
+        logits = outputs.logits
+
+        loss = criterion(logits, labels)
+        loss.backward()
+
+        for name, param in model.named_parameters():
+            if param.grad is None:
+                continue
+            fisher[name] += len(labels) * param.grad.data.pow(2)
+
+    for name, param in model.named_parameters():
+        fisher[name] = fisher[name] / len(dataset)
+
+    return fisher
+
 
 class Dataset(object):
 
