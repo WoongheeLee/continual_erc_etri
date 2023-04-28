@@ -7,6 +7,7 @@ import numpy as np
 from tqdm import tqdm
 from sklearn.metrics import classification_report, f1_score
 
+from utils.common import init_seed
 from utils.data_utils import get_data_loader
 from models.multimodal_classifiers import MultiModalClassifierAdapter
 
@@ -115,8 +116,7 @@ def parse_args(args=None):
 
 
 def main(args):
-    torch.manual_seed(args.seed)
-    np.random.seed(args.seed)
+    init_seed(args.seed)
     device = 'cpu' if args.cpu else 'cuda'
 
     train19_dl, valid19_dl, test19_dl = get_data_loader(data_root='./data/KEMDy19',

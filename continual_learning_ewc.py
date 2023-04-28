@@ -8,6 +8,7 @@ import numpy as np
 from tqdm import tqdm
 from sklearn.metrics import classification_report, f1_score
 
+from utils.common import init_seed
 from utils.data_utils import get_data_loader, build_fisher_matrix
 from models.multimodal_classifiers import MultiModalClassifier
 
@@ -132,8 +133,7 @@ def ewc_loss_fn(fisher, old_named_params, model, ewc_lambda):
 
 
 def main(args):
-    torch.manual_seed(args.seed)
-    np.random.seed(args.seed)
+    init_seed(args.seed)
     device = 'cpu' if args.cpu else 'cuda'
 
     train19_dl, valid19_dl, test19_dl = get_data_loader(data_root='./data/KEMDy19',
