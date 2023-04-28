@@ -75,36 +75,28 @@ def make_weighted_random_sampler(dataset, n_classes=7):
     return sampler
 
 
-def get_data_loader(data_root, max_text_len, max_seq_len, k_fold, fold, batch_size, seed=12):
+def get_data_loader(data_root, max_text_len, max_seq_len, k_fold, fold, batch_size, seed=12, is_ewc=False):
     tokenizer = BertTokenizer.from_pretrained('klue/bert-base')
     processor = Wav2Vec2Processor.from_pretrained('facebook/wav2vec2-base-960h')
 
     dataset = Dataset(data_root=data_root, tokenizer=tokenizer, processor=processor,
                       max_text_len=max_text_len, max_seq_len=max_seq_len)
-    
+
     train_ds = FoldDataset(dataset, k=k_fold, fold=fold, split='train', seed=seed)
     valid_ds = FoldDataset(dataset, k=k_fold, fold=fold, split='valid', seed=seed)
     test_ds = FoldDataset(dataset, k=k_fold, fold=fold, split='test', seed=seed)
 
-    train_sampler = make_weighted_random_sampler(train_ds)
-    train_dl = DataLoader(
-        train_ds, batch_size=batch_size, collate_fn=collate_fn, sampler=train_sampler, shuffle=False)
-    valid_dl = DataLoader(valid_ds, batch_size=batch_size, collate_fn=collate_fn, shuffle=False)
-    test_dl = DataLoader(test_ds, batch_size=batch_size, collate_fn=collate_fn, shuffle=False)
+    if is_ewc:
+        return train_ds
 
+    else:
+        train_sampler = make_weighted_random_sampler(train_ds)
+        train_dl = DataLoader(
+                train_ds, batch_size=batch_size, collate_fn=collate_fn, sampler=train_sampler, shuffle=False)
+        valid_dl = DataLoader(valid_ds, batch_size=batch_size, collate_fn=collate_fn, shuffle=False)
+        test_dl = DataLoader(test_ds, batch_size=batch_size, collate_fn=collate_fn, shuffle=False)
+        return train_dl, valid_dl, test_dl
 
-    return train_dl, valid_dl, test_dl
-
-def get_data_loader_ewc(data_root, max_text_len, max_seq_len, k_fold, fold, batch_size, seed=12):
-    tokenizer = BertTokenizer.from_pretrained('klue/bert-base')
-    processor = Wav2Vec2Processor.from_pretrained('facebook/wav2vec2-base-960h')
-
-    dataset = Dataset(data_root=data_root, tokenizer=tokenizer, processor=processor,
-                      max_text_len=max_text_len, max_seq_len=max_seq_len)
-
-    train_ds = FoldDataset(dataset, k=k_fold, fold=fold, split='train', seed=seed)
-    
-    return train_ds
 
 def build_fisher_matrix(dataset, model, optimizer, criterion, device):
     old_task_loader = DataLoader(dataset, batch_size=10, collate_fn=collate_fn, shuffle=True)

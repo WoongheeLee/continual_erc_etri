@@ -8,7 +8,7 @@ import numpy as np
 from tqdm import tqdm
 from sklearn.metrics import classification_report, f1_score
 
-from utils.data_utils import get_data_loader, get_data_loader_ewc, build_fisher_matrix
+from utils.data_utils import get_data_loader, build_fisher_matrix
 from models.multimodal_classifiers import MultiModalClassifier
 
 
@@ -157,21 +157,24 @@ def main(args):
     test_dl = test19_dl if args.task == 'KEMDy19' else test20_dl
 
     if args.task == 'KEMDy19':
-        prev_train_ds = get_data_loader_ewc(data_root='./data/KEMDy20',
+        prev_train_ds = get_data_loader(data_root='./data/KEMDy20',
                                             max_text_len=args.max_text_len,
                                             max_seq_len=args.max_seq_len,
                                             k_fold=args.k_fold,
                                             fold=args.num_fold,
                                             batch_size=args.batch_size,
-                                            seed=args.seed)
+                                            seed=args.seed,
+                                            is_ewc=True)
     else:
-        prev_train_ds = get_data_loader_ewc(data_root='./data/KEMDy19',
+        prev_train_ds = get_data_loader(data_root='./data/KEMDy19',
                                         max_text_len=args.max_text_len,
                                         max_seq_len=args.max_seq_len,
                                         k_fold=args.k_fold,
                                         fold=args.num_fold,
                                         batch_size=args.batch_size,
-                                        seed=args.seed)
+                                        seed=args.seed,
+                                        is_ewc=True)
+
     prev_valid_dl = valid20_dl if args.task == 'KEMDy19' else valid19_dl
 
     output_dir = Path(f'./outputs/ewc/fold_{args.num_fold}/{args.task}')
