@@ -100,6 +100,8 @@ def parse_args(args=None):
     parser.add_argument('--seed', type=int, default=12)
     parser.add_argument('--num_fold', type=int, default=0, help='k-fold 중에서 사용할 fold 숫자')
     parser.add_argument('--k_fold', type=int, default=5, help='k-fold의 fold 개수 (k)')
+    
+    parser.add_argument('--checkpoint', type=str, help='MultiModalClassifier checkpoint 경로', required=True)
 
     parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--batch_size', type=int, default=32)
@@ -144,6 +146,9 @@ def main(args):
     output_dir.mkdir(parents=True, exist_ok=True)
 
     model = MultiModalClassifier().to(device)
+
+    if args.checkpoint is not None:
+        model.load_state_dict(torch.load(args.checkpoint))
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
     loss_fn = torch.nn.CrossEntropyLoss()
