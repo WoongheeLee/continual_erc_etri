@@ -103,6 +103,8 @@ def parse_args(args=None):
     parser.add_argument('--num_fold', type=int, default=0, help='k-fold 중에서 사용할 fold 숫자')
     parser.add_argument('--k_fold', type=int, default=5, help='k-fold의 fold 개수 (k)')
 
+    parser.add_argument('--checkpoint', type=str, help='MultiModalClassifier checkpoint 경로', required=True)
+
     parser.add_argument('--ewc_lambda', type=int, help='ewc lambda')
 
     parser.add_argument('--lr', type=float, default=1e-5)
@@ -156,24 +158,7 @@ def main(args):
     valid_dl = valid19_dl if args.task == 'KEMDy19' else valid20_dl
     test_dl = test19_dl if args.task == 'KEMDy19' else test20_dl
 
-    if args.task == 'KEMDy19':
-        prev_train_ds = get_data_loader(data_root='./data/KEMDy20',
-                                            max_text_len=args.max_text_len,
-                                            max_seq_len=args.max_seq_len,
-                                            k_fold=args.k_fold,
-                                            fold=args.num_fold,
-                                            batch_size=args.batch_size,
-                                            seed=args.seed,
-                                            is_ewc=True)
-    else:
-        prev_train_ds = get_data_loader(data_root='./data/KEMDy19',
-                                        max_text_len=args.max_text_len,
-                                        max_seq_len=args.max_seq_len,
-                                        k_fold=args.k_fold,
-                                        fold=args.num_fold,
-                                        batch_size=args.batch_size,
-                                        seed=args.seed,
-                                        is_ewc=True)
+    prev_train_ds = train20_dl.dataset if args.task == 'KEMDy19' else train20_dl.dataset
 
     prev_valid_dl = valid20_dl if args.task == 'KEMDy19' else valid19_dl
 
@@ -181,6 +166,9 @@ def main(args):
     output_dir.mkdir(parents=True, exist_ok=True)
 
     model = MultiModalClassifier().to(device)
+
+    if args.checkpoint is not None:
+        model.load_state_dict(torch.load(args.checkpoint))
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
     loss_fn = torch.nn.CrossEntropyLoss()
