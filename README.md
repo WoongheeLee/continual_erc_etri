@@ -44,35 +44,55 @@
 * 파이썬 버전 3.8
 * pytorch==1.13.1
 * torchaudio==0.13.1
-* dependencies
-  ```
-  numpy
-  pandas
-  scikit-learn
-  tqdm
-  transformers
-  matplotlib
-  seaborn
-  ```
+* install dependencies `pip install -r requirements.txt`
 
 ### 모델 학습
-* init
+#### continual_learning_init.py
+| argument | description |
+|---|---|
+| --task | 학습 task |
+| --exp_name | 실험 이름 |
+| --seed | seed값 |
+| --num_fold | k-fold 중에서 사용할 fold 숫자 |
+| --k_fold | k-fold의 fold 개수 (k=5) |
+| --lr | learning rate |
+| --batch_size | Batch size `32` |
+| --num_epochs | epoch `40` |
+| --max_text_len | 최대 text token 길이 |
+| --max_seq_len | 최대 speech token 길이 |
+| --cpu | cpu 동작 여부 |
+
 ```
+# 처음 task 학습할 때 사용
 bash run-init.sh
 ```
-* finetune
+#### finetune
+| argument | description |
+|---|---|
+| --task | 학습 task |
+| --exp_name | 실험 이름 |
+| --seed | seed값 |
+| --num_fold | k-fold 중에서 사용할 fold 숫자 |
+| --k_fold | k-fold의 fold 개수 (k=5) |
+| --checkpoint | 
+| --lr | learning rate |
+| --batch_size | Batch size `32` |
+| --num_epochs | epoch `40` |
+| --max_text_len | 최대 text token 길이 |
+| --max_seq_len | 최대 speech token 길이 |
+| --cpu | cpu 동작 여부 |
 ```
 bash run-finetune.sh
 ```
-* ewc
+#### ewc
 ```
 bash run-ewc.sh
 ```
-* adapter
+#### adapter
 ```
 bash run-adapter.sh
 ```
-* without pretraining
+#### without pretraining
 ```
 bash run-adapter-wo-pretraining.sh
 ```
