@@ -41,9 +41,37 @@
   
 ## 사용 설명서
 ### 실험 환경
-* 
+* 파이썬 버전 3.8
+* pytorch==1.13.1
+* torchaudio==0.13.1
+* dependencies
+  ```
+  numpy
+  pandas
+  scikit-learn
+  tqdm
+  transformers
+  matplotlib
+  seaborn
+  ```
 
 ### 모델 학습
+* init
+```
+bash run-init.sh
+```
+* finetune
+```
+bash run-finetune.sh
+```
+* ewc
+```
+bash run-ewc.sh
+```
+* adapter
+```
+bash run-adapter.sh
+```
 * without pretraining
 ```
 bash run-adapter-wo-pretraining.sh
