@@ -63,7 +63,10 @@
 | --cpu | cpu 동작 여부 |
 
 ```
-# 처음 task 학습할 때 사용
+# Continual learning의 선행 task를 학습하기 위한 학습 스크립트 실행
+# 이 연구에서는 아래 두 가지 실험 세팅으로 continual learning을 수행 함
+# 1) KEMDy19 -> KEMDy20 실험을 위해, KEMDy19를 학습
+# 2) KEMDy20 -> KEMDy19 실험을 위해, KEMDy20을 학습
 bash run-init.sh
 ```
 #### finetune
