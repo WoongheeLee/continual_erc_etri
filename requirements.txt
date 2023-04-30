@@ -1,2 +1,6 @@
-transformers
+numpy
+pandas
 scikit-learn
+tqdm
+transformers
+matplotlib
