@@ -46,6 +46,38 @@
 * torchaudio==0.13.1
 * install dependencies `pip install -r requirements.txt`
 
+### 스크립트 실행 순서
+
+```
+bash run-init.sh
+bash run-finetune.sh
+bash run-ewc.sh
+bash run-adapter.sh
+bash run-adapter-wo-pretraining.sh
+```
+
+### 성능 비교 [[노트북](https://github.com/WoongheeLee/continual_erc_etri/blob/master/result.ipynb)]
+
+위 스크립트 실행 
+실행 순서에 순서에 따라 
+
+
+|   | task_a(original) | finetune | ewc | adapter | adapter_wo_pretrain |
+|---|---|---|---|---|---|
+| **KEMDy19** | 0.70389 | 0.524502 | 0.599862 | 0.681204 | 0.510747 |
+| **KEMDy20** | 0.87122 | 0.765711 | 0.761987 | 0.847727 | 0.833978 |
+
+#### 파괴적 망각 방지 성능 비교
+<img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig2.png" width="700"/>
+
+#### 사전학습 여부에 따른 혼동 행렬
+<img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig3.png" width="700"/>
+
+
+
+
+---
+
 ### 모델 학습
 #### continual_learning_init.py
 | argument | description |
@@ -98,17 +130,3 @@ bash run-adapter.sh
 #### without pretraining
 ```
 bash run-adapter-wo-pretraining.sh
-```
-
-### 성능 비교
-
-|   | task_a(original) | finetune | ewc | adapter | adapter_wo_pretrain |
-|---|---|---|---|---|---|
-| **KEMDy19** | 0.70389 | 0.524502 | 0.599862 | 0.681204 | 0.510747 |
-| **KEMDy20** | 0.87122 | 0.765711 | 0.761987 | 0.847727 | 0.833978 |
-
-#### 파괴적 망각 방지 성능 비교
-<img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig2.png" width="700"/>
-
-#### 사전학습 여부에 따른 혼동 행렬
-<img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig3.png" width="700"/>
