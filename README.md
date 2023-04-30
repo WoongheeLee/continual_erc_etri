@@ -50,13 +50,13 @@
   * [링크](https://hyu-my.sharepoint.com/:f:/g/personal/onnoo_hanyang_ac_kr/EoevacD34iBOsz7w2J3bMqQBoSOIfZAN5tD6vqOTRs3NTw?e=wacat9)
 
 ## 사용 설명서
-### 1) 실험 환경 :sparkling_heart:
+### 1️⃣ 실험 환경
 * 파이썬 버전 3.8
 * pytorch==1.13.1
 * torchaudio==0.13.1
 * install dependencies : `pip install -r requirements.txt`
 
-### 2) 스크립트 실행 순서 :tada:
+### 2️⃣ 스크립트 실행 순서
 
 ```
 bash run-init.sh
@@ -66,7 +66,7 @@ bash run-adapter.sh
 bash run-adapter-wo-pretraining.sh
 ```
 
-### 3) 성능 비교 :fire:
+### 3️⃣ 성능 비교
 
 위 스크립트 실행 순서에 순서에 따라 학습이 완료 된 후 [result.ipynb](https://github.com/WoongheeLee/continual_erc_etri/blob/master/result.ipynb)에서 catastrophic forgetting 완화 성능을 확인 가능
 
