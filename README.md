@@ -80,3 +80,7 @@ bash run-adapter-wo-pretraining.sh
 
 #### 사전학습 여부에 따른 혼동 행렬
 <img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig3.png" width="700"/>
+
+## Reference
+* Houlsby, Neil, et al. "Parameter-efficient transfer learning for NLP." International Conference on Machine Learning. *PMLR*, 2019.
+* Kirkpatrick, James, et al. "Overcoming catastrophic forgetting in neural networks." *Proceedings of the national academy of sciences* 114.13 (2017): 3521-3526.
