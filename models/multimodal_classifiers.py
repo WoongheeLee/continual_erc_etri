@@ -5,14 +5,16 @@ import torch.nn as nn
 from transformers import BertModel, Wav2Vec2Model
 
 from models.bert_adapter import BertAdapter
-from models.wav2vec2model_adapter import Wav2Vec2Adapter
+from models.wav2vec2model_adapter import Wav2Vec2AdapterModel
+
+
+base_wav2vec2 = Wav2Vec2Model.from_pretrained('facebook/wav2vec2-base-960h')
 
 
 class MultiModalClassifierAdapter(nn.Module):
     
     def __init__(self, num_labels=7, dropout_prob=0.1, num_tasks=2, initialize_weights=False):
         super(MultiModalClassifierAdapter, self).__init__()
-        self.base_wav2vec2 = Wav2Vec2Model.from_pretrained('facebook/wav2vec2-base-960h')
 
         self.bert = BertModel.from_pretrained('klue/bert-base')
         if initialize_weights:
@@ -22,7 +24,7 @@ class MultiModalClassifierAdapter(nn.Module):
             param.requires_grad = False
         self.text_encoder = nn.ModuleList([BertAdapter(self.bert, adapter_size=64) for _ in range(num_tasks)])
 
-        self.speech_encoder = Wav2Vec2Adapter.from_pretrained('facebook/wav2vec2-base-960h')
+        self.speech_encoder = Wav2Vec2AdapterModel.from_pretrained('facebook/wav2vec2-base-960h')
         if initialize_weights:
             self.speech_encoder.init_weights()  # without pretraining
 
@@ -49,7 +51,7 @@ class MultiModalClassifierAdapter(nn.Module):
         speech_hidden_states = self.speech_projector[task_id](speech_hidden_states)
 
         # mean_pooling (attention mask에서 1인 스텝들만 고려)
-        padding_mask = self.base_wav2vec2._get_feature_vector_attention_mask(
+        padding_mask = base_wav2vec2._get_feature_vector_attention_mask(
             speech_hidden_states.shape[1], speech_inputs['attention_mask'], add_adapter=True)
         speech_hidden_states[~padding_mask] = 0.0
         speech_hidden_states = speech_hidden_states.sum(dim=1) / padding_mask.sum(dim=1).view(-1, 1)
