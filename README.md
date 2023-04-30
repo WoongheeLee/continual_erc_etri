@@ -16,8 +16,23 @@
 ├── data
 │   ├── KEMDy19
 │   └── KEMDy20
-└── experiments
+├── figures
 ├── models
+├── outputs
+│   ├── adapter
+│   │   ├── fold_0
+│   │   │   ├── KEMDy19
+│   │   │   │   └── best_model.pt
+│   │   │   └── KEMDy20
+│   │   │       └── best_model.pt
+│   │   ├── fold_1
+│   │   ├── fold_2
+│   │   ├── fold_3
+│   │   └── fold_4
+│   ├── adapter_wo_pretraining
+│   ├── ewc
+│   ├── finetune
+│   └── task_a
 └── utils
 ```
 * 데이터
@@ -35,4 +50,14 @@ bash run-adapter-wo-pretraining.sh
 ```
 
 ### 성능 비교
-* 
+
+|   | task_a(original) | finetune | ewc | adapter | adapter_wo_pretrain |
+|---|---|---|---|---|---|
+| **KEMDy19** | 0.70389 | 0.524502 | 0.599862 | 0.681204 | 0.510747 |
+| **KEMDy20** | 0.87122 | 0.765711 | 0.761987 | 0.847727 | 0.833978 |
+
+#### 파괴적 망각 방지 성능 비교
+<img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig2.png" width="700"/>
+
+#### 사전학습 여부에 따른 혼동 행렬
+<img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig3.png" width="700"/>
