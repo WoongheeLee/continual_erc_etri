@@ -40,13 +40,13 @@
   * K. J. Noh and H. Jeong, “KEMDy20,” https://nanum.etri.re.kr/share/kjnoh/KEMDy20?lang=ko_KR 
   
 ## 사용 설명서
-### 실험 환경
+### 1) 실험 환경 :sparkling_heart:
 * 파이썬 버전 3.8
 * pytorch==1.13.1
 * torchaudio==0.13.1
-* install dependencies `pip install -r requirements.txt`
+* install dependencies : `pip install -r requirements.txt`
 
-### 스크립트 실행 순서
+### 2) 스크립트 실행 순서 :tada:
 
 ```
 bash run-init.sh
@@ -56,10 +56,9 @@ bash run-adapter.sh
 bash run-adapter-wo-pretraining.sh
 ```
 
-### 성능 비교
+### 3) 성능 비교 :fire:
 
-위 스크립트 실행 순서에 순서에 따라 학습이 완료 된 후 [노트북](https://github.com/WoongheeLee/continual_erc_etri/blob/master/result.ipynb)을 통해, catastrophic forgetting 완화 성능을 확인 가능
-
+위 스크립트 실행 순서에 순서에 따라 학습이 완료 된 후 [result.ipynb](https://github.com/WoongheeLee/continual_erc_etri/blob/master/result.ipynb)에서 catastrophic forgetting 완화 성능을 확인 가능
 
 |   | task_a(original) | finetune | ewc | adapter | adapter_wo_pretrain |
 |---|---|---|---|---|---|
@@ -72,60 +71,8 @@ bash run-adapter-wo-pretraining.sh
 #### 사전학습 여부에 따른 혼동 행렬
 <img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig3.png" width="700"/>
 
-
-
-
 ---
 
-### 모델 학습
-#### continual_learning_init.py
-| argument | description |
-|---|---|
-| --task | 학습 task |
-| --exp_name | 실험 이름 |
-| --seed | seed값 |
-| --num_fold | k-fold 중에서 사용할 fold 숫자 |
-| --k_fold | k-fold의 fold 개수 (k=5) |
-| --lr | learning rate |
-| --batch_size | Batch size `32` |
-| --num_epochs | epoch `40` |
-| --max_text_len | 최대 text token 길이 |
-| --max_seq_len | 최대 speech token 길이 |
-| --cpu | cpu 동작 여부 |
+## 모델 체크포인트
 
-```
-# Continual learning의 선행 task를 학습하기 위한 학습 스크립트 실행
-# 이 연구에서는 아래 두 가지 실험 세팅으로 continual learning을 수행 함
-# 1) KEMDy19 -> KEMDy20 실험을 위해, KEMDy19를 학습
-# 2) KEMDy20 -> KEMDy19 실험을 위해, KEMDy20을 학습
-bash run-init.sh
-```
-#### finetune
-| argument | description |
-|---|---|
-| --task | 학습 task |
-| --exp_name | 실험 이름 |
-| --seed | seed값 |
-| --num_fold | k-fold 중에서 사용할 fold 숫자 |
-| --k_fold | k-fold의 fold 개수 (k=5) |
-| --checkpoint | 
-| --lr | learning rate |
-| --batch_size | Batch size `32` |
-| --num_epochs | epoch `40` |
-| --max_text_len | 최대 text token 길이 |
-| --max_seq_len | 최대 speech token 길이 |
-| --cpu | cpu 동작 여부 |
-```
-bash run-finetune.sh
-```
-#### ewc
-```
-bash run-ewc.sh
-```
-#### adapter
-```
-bash run-adapter.sh
-```
-#### without pretraining
-```
-bash run-adapter-wo-pretraining.sh
+링크
