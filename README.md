@@ -58,7 +58,7 @@ bash run-adapter-wo-pretraining.sh
 
 ### 성능 비교
 
-위 스크립트 실행 실행 순서에 순서에 따라 학습이 완료 된 후 [[노트북](https://github.com/WoongheeLee/continual_erc_etri/blob/master/result.ipynb)]을 통해, catastrophic forgetting 완화 성능을 확인 가능
+위 스크립트 실행 순서에 순서에 따라 학습이 완료 된 후 [노트북](https://github.com/WoongheeLee/continual_erc_etri/blob/master/result.ipynb)을 통해, catastrophic forgetting 완화 성능을 확인 가능
 
 
 |   | task_a(original) | finetune | ewc | adapter | adapter_wo_pretrain |
