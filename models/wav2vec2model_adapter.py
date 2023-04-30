@@ -13,31 +13,31 @@ from transformers.models.wav2vec2.modeling_wav2vec2 import (
     Wav2Vec2BaseModelOutput,
 )
 
-class Wav2Vec2Adapter(Wav2Vec2Model):
+class Wav2Vec2AdapterModel(Wav2Vec2Model):
     def __init__(self, config: Wav2Vec2Config, n_tasks=2, freeze_encoder=True):
         '''
         args
             config
             n_tasks (int) the number of tasks
         '''
-        print('initializing MyWav2Vec2Model...')
+        # print('initializing MyWav2Vec2Model...')
         super().__init__(config)
         self.config = config
         self.feature_extractor = Wav2Vec2FeatureEncoder(config)
         self.feature_projection = Wav2Vec2FeatureProjection(config)
         
         if freeze_encoder:
-            print('freeze pretrained part of wav2vec')
+            # print('freeze pretrained part of wav2vec')
             l = 0
             for n, p in self.feature_extractor.named_parameters():
                 p.requires_grad = False
                 l += 1
-            print('feature_extractor:', l, 'are frozen')
+            # print('feature_extractor:', l, 'are frozen')
             l = 0
             for n, p in self.feature_projection.named_parameters():
                 p.requires_grad = False
                 l += 1
-            print('feature_projection:', l, 'are frozen')
+            # print('feature_projection:', l, 'are frozen')
         
 #         # 우리 아답터
 #         self.my_adapter = [WavAdapter() for _ in range(n_tasks)]
