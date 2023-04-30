@@ -1,0 +1,82 @@
+{
+  "task_a": {
+    "KEMDy19": {
+      "fold_0": "./outputs/task_a/fold_0/KEMDy19/best_model.pt",
+      "fold_1": "./outputs/task_a/fold_1/KEMDy19/best_model.pt",
+      "fold_2": "./outputs/task_a/fold_2/KEMDy19/best_model.pt",
+      "fold_3": "./outputs/task_a/fold_3/KEMDy19/best_model.pt",
+      "fold_4": "./outputs/task_a/fold_4/KEMDy19/best_model.pt"
+    },
+    "KEMDy20": {
+      "fold_0": "./outputs/task_a/fold_0/KEMDy20/best_model.pt",
+      "fold_1": "./outputs/task_a/fold_1/KEMDy20/best_model.pt",
+      "fold_2": "./outputs/task_a/fold_2/KEMDy20/best_model.pt",
+      "fold_3": "./outputs/task_a/fold_3/KEMDy20/best_model.pt",
+      "fold_4": "./outputs/task_a/fold_4/KEMDy20/best_model.pt"
+    }
+  },
+  "finetune": {
+    "KEMDy19": {
+      "fold_0": "./outputs/finetune/fold_0/KEMDy20/best_model.pt",
+      "fold_1": "./outputs/finetune/fold_1/KEMDy20/best_model.pt",
+      "fold_2": "./outputs/finetune/fold_2/KEMDy20/best_model.pt",
+      "fold_3": "./outputs/finetune/fold_3/KEMDy20/best_model.pt",
+      "fold_4": "./outputs/finetune/fold_4/KEMDy20/best_model.pt"
+    },
+    "KEMDy20": {
+      "fold_0": "./outputs/finetune/fold_0/KEMDy19/best_model.pt",
+      "fold_1": "./outputs/finetune/fold_1/KEMDy19/best_model.pt",
+      "fold_2": "./outputs/finetune/fold_2/KEMDy19/best_model.pt",
+      "fold_3": "./outputs/finetune/fold_3/KEMDy19/best_model.pt",
+      "fold_4": "./outputs/finetune/fold_4/KEMDy19/best_model.pt"
+    }
+  },
+  "ewc": {
+    "KEMDy19": {
+      "fold_0": "./outputs/ewc/fold_0/KEMDy20/best_model.pt",
+      "fold_1": "./outputs/ewc/fold_1/KEMDy20/best_model.pt",
+      "fold_2": "./outputs/ewc/fold_2/KEMDy20/best_model.pt",
+      "fold_3": "./outputs/ewc/fold_3/KEMDy20/best_model.pt",
+      "fold_4": "./outputs/ewc/fold_4/KEMDy20/best_model.pt"
+    },
+    "KEMDy20": {
+      "fold_0": "./outputs/ewc/fold_0/KEMDy19/best_model.pt",
+      "fold_1": "./outputs/ewc/fold_1/KEMDy19/best_model.pt",
+      "fold_2": "./outputs/ewc/fold_2/KEMDy19/best_model.pt",
+      "fold_3": "./outputs/ewc/fold_3/KEMDy19/best_model.pt",
+      "fold_4": "./outputs/ewc/fold_4/KEMDy19/best_model.pt"
+    }
+  },
+  "adapter": {
+    "KEMDy19": {
+      "fold_0": "./outputs/adapter/fold_0/best19_model.pt",
+      "fold_1": "./outputs/adapter/fold_1/best19_model.pt",
+      "fold_2": "./outputs/adapter/fold_2/best19_model.pt",
+      "fold_3": "./outputs/adapter/fold_3/best19_model.pt",
+      "fold_4": "./outputs/adapter/fold_4/best19_model.pt"
+    },
+    "KEMDy20": {
+      "fold_0": "./outputs/adapter/fold_0/best20_model.pt",
+      "fold_1": "./outputs/adapter/fold_1/best20_model.pt",
+      "fold_2": "./outputs/adapter/fold_2/best20_model.pt",
+      "fold_3": "./outputs/adapter/fold_3/best20_model.pt",
+      "fold_4": "./outputs/adapter/fold_4/best20_model.pt"
+    }
+  },
+  "adapter_wo_pretraining": {
+    "KEMDy19": {
+      "fold_0": "./outputs/adapter_wo_pretraining/fold_0/best19_model.pt",
+      "fold_1": "./outputs/adapter_wo_pretraining/fold_1/best19_model.pt",
+      "fold_2": "./outputs/adapter_wo_pretraining/fold_2/best19_model.pt",
+      "fold_3": "./outputs/adapter_wo_pretraining/fold_3/best19_model.pt",
+      "fold_4": "./outputs/adapter_wo_pretraining/fold_4/best19_model.pt"
+    },
+    "KEMDy20": {
+      "fold_0": "./outputs/adapter_wo_pretraining/fold_0/best20_model.pt",
+      "fold_1": "./outputs/adapter_wo_pretraining/fold_1/best20_model.pt",
+      "fold_2": "./outputs/adapter_wo_pretraining/fold_2/best20_model.pt",
+      "fold_3": "./outputs/adapter_wo_pretraining/fold_3/best20_model.pt",
+      "fold_4": "./outputs/adapter_wo_pretraining/fold_4/best20_model.pt"
+    }
+  }
+}
