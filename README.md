@@ -43,10 +43,10 @@
 │   └── task_a
 └── utils
 ```
-* 데이터
+* 데이터 (`/data/`)
   * K. J. Noh and H. Jeong, “KEMDy19,” https://nanum.etri.re.kr/share/kjnoh/KEMDy19?lang=ko_KR 
   * K. J. Noh and H. Jeong, “KEMDy20,” https://nanum.etri.re.kr/share/kjnoh/KEMDy20?lang=ko_KR 
-* 체크포인트
+* 체크포인트 (`/outputs/`)
   * [링크](https://hyu-my.sharepoint.com/:f:/g/personal/onnoo_hanyang_ac_kr/EoevacD34iBOsz7w2J3bMqQBoSOIfZAN5tD6vqOTRs3NTw?e=wacat9)
 
 ## 사용 설명서
