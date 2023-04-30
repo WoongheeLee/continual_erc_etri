@@ -51,7 +51,7 @@
 
 ## 사용 설명서
 ### 1) 실험 환경 :sparkling_heart:
-* 파이썬 버전 3.8
+* Python 3.8
 * pytorch==1.13.1
 * torchaudio==0.13.1
 * install dependencies : `pip install -r requirements.txt`
