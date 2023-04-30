@@ -72,9 +72,3 @@ bash run-adapter-wo-pretraining.sh
 
 #### 사전학습 여부에 따른 혼동 행렬
 <img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig3.png" width="700"/>
-
----
-
-## 모델 체크포인트
-
-링크
