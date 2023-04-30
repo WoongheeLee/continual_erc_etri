@@ -13,7 +13,7 @@
 * 멀티모달 분류 모델이 아래 그림의 왼쪽 (a)와 같이 주어짐
 * 텍스트 모달리티의 태스크 별 특징 학습을 위한 아답터 구조는 그림 오른쪽의 (b), 음성 모달리티의 태스크 별 특징 학습을 위한 아답터 구조는 그림 오른쪽의 (c)와 같음
 * 사전학습 된 BERT와 Wav2Vec2를 이용하여 아답터 레이어들 (a)와 (b)만 태스크별 학습을 통해 파괴적 망각을 완화 함
-
+<img src="https://raw.githubusercontent.com/WoongheeLee/continual_erc_etri/master/figures/fig1.png" width="700"/>
 
 ## 디렉토리 구조
 * KEMDy20은 v1.1
